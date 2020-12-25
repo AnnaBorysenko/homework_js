@@ -34,10 +34,14 @@ arr.forEach(function (item, index) {
 let str = "Как однажды Жак звонарь сломал фонарь головой";
 let arr = str.split(" ");
 let newArr = arr.splice(arr.indexOf("однажды"), 1);
+let newArr2 = arr.splice(arr.indexOf("головой"), 1);
 arr.splice(arr.indexOf("сломал"), 0, newArr[0]);
+arr.splice(arr.indexOf("фонарь"), 0, newArr2[0]);
 let result = arr.join(" ");
+console.log(str);
 console.log(result);
-Task_5
+
+// Task_5
 let person = {
     name: "ann",
     age: "27",
@@ -58,7 +62,7 @@ for (let i = 0; i < Object.keys(mobile).length; i++) {
 }
 person[`mobile`] = mobile;
 console.log(person);
-Task_7
+// Task_7
 let currentDate = new Date();
 let dates = {
     dateOne: currentDate,
@@ -71,12 +75,17 @@ if (inputDate > dates.dateTwo && inputDate < dates.dateOne) {
 } else {
     console.log("no")
 }
-// Task_8
+// Task_8 
 let arr = [];
 let n = 7;
 for (let i = 0; i < n; i++) {
-    let number = +prompt("");
+    let number = +prompt("введите число");
+    if (Number.isNaN(number)) {
+        alert("вы ввели не число")
+        break;
+    }
     arr.push(number);
+
 }
 console.log(arr);
 let result = arr.reduce((sum, current) => sum + current, 0);
@@ -94,11 +103,11 @@ for (let x = 1; x <= 9; x++) {
 }
 console.log(arr);
 // Task_10
-let img = document.createElement('img');
-img.className = "img";
-img.src = "https://www.google.com.ua/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
-img.alt = "картинка";
-img.style.border = "1px solid #ccc";
-img.style.width = "200px";
-document.body.append(img);
-
+let img = {
+    name: "img",
+    src: "https://www.google.com.ua/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+    alt: "картинка",
+    styleBorder: "1px solid #ccc",
+    styleWidth:"200"
+};
+console.log(img);
