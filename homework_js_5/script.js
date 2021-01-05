@@ -1,8 +1,8 @@
 // Task_1
 const calculator = {
     "read": function () {
-        calculator.x = prompt("x");
-        calculator.y = prompt("y");
+        this.x = prompt("x");
+        this.y = prompt("y");
     },
     "sum": function () {
         return +this.x + +this.y;
@@ -23,23 +23,33 @@ alert(calculator.multi());
 alert(calculator.diff());
 alert(calculator.div());
 // Task_2
-let coffeeMachine;
-coffeeMachine = {
+// let coffeeMachine;
+// coffeeMachine = {
+//     message: "Your coffee is ready!",
+//
+//     start: function () {
+//       let timer = setTimeout("alert(coffeeMachine.message)", 3000);
+//       return timer;
+//     }
+// };
+// coffeeMachine.start();
+// Task_2
+let coffeeMachine = {
     message: "Your coffee is ready!",
-
-    start: function () {
-      let timer = setTimeout("alert(coffeeMachine.message)", 3000);
-      return timer;
+    start: function(){
+        setTimeout(function(){
+            alert(coffeeMachine.message);
+        }, 3000);
     }
-};
-coffeeMachine.start();
+}
+coffeeMachine.start()
+
 // Task_3
 function calcFunc(param1 = 0, param2 = 1){
     return function (){
        let start = param1;
         return param1 + param2;
     }
-
 }
 let generator = calcFunc(1,2);
 console.log(generator());
@@ -90,37 +100,36 @@ alert(current); // 1
 let me = {
     x: null,
     y: null,
-
     getSum: function (var1, var2) {
-        me.x = var1;
-        me.y = var2;
-        let res = calculator.sum.bind(this, me.x, me.y);
-        return `${me.x} + ${me.y} = ${res(me.x, me.y)}`;
+        this.x = var1;
+        this.y = var2;
+        let res = calculator.sum.bind(this, this.x, this.y);
+        return `${this.x} + ${this.y} = ${res(this.x, this.y)}`;
     },
     getDiv: function (var1, var2) {
-        me.x = var1;
-        me.y = var2;
-        let res2 = calculator.div.bind(this, me.x, me.y);
-        return `${me.x} / ${me.y} = ${res2(me.x, me.y)}`;
+        this.x = var1;
+        this.y = var2;
+        let res2 = calculator.div.bind(this, this.x, this.y);
+        return `${this.x} / ${this.y} = ${res2(this.x, this.y)}`;
     },
     getMulti: function (var1, var2) {
-        me.x = var1;
-        me.y = var2;
-        let res3 = calculator.multi.bind(this, me.x, me.y);
-        return `${me.x} * ${me.y} = ${res3(me.x, me.y)}`;
+        this.x = var1;
+        this.y = var2;
+        let res3 = calculator.multi.bind(this, this.x, this.y);
+        return `${this.x} * ${this.y} = ${res3(this.x, this.y)}`;
     },
     getDiff: function (var1, var2) {
-        me.x = var1;
-        me.y = var2;
-        let res4 = calculator.diff.bind(this, me.x, me.y);
-        return `${me.x} - ${me.y} = ${res4(me.x, me.y)}`;
+        this.x = var1;
+        this.y = var2;
+        let res4 = calculator.diff.bind(this, this.x, this.y);
+        return `${this.x} - ${this.y} = ${res4(this.x, this.y)}`;
     },
 };
 alert(me.getSum(1, 1));
 alert(me.getDiv(1, 0));
 alert(me.getMulti(1, 1));
 alert(me.getDiff(0, 1));
-Task_5
+// Task_5
 let country = {
     name: 'Ukraine',
     language: 'ukrainian',
@@ -158,12 +167,15 @@ userFormat('<<<', '>>>'); // <<<John>>>
 let hello = concat.bind(null, "Hello, ")
 hello('World'); // Hello World
 hello('John'); // Hello John
-Task_8
-Task_8_1
+// Task_8
+// Task_8_1
+
 function cube(base) {
-    for(let i = 0; i < base; i++){
-        return (base * base) * base;
+    let res = base;
+    for(let i = 0; i < 2; i++){
+      res = res * base;
     }
+    return res;
 }
 console.log( cube(2) ); // 8
 // Task_8_2
