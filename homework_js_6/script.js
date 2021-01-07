@@ -19,7 +19,7 @@ class Zigzag extends Figure {
         ctx.strokeStyle = color;
         ctx.beginPath();
         ctx.moveTo(startX, startY);
-        for (let n = 0; n < 60; n++) {
+        for (let n = 0; n < 55; n++) {
             let x = startX + ((n + 1) * zigzagSpacing);
             let y;
             if (n % 2 == 0) {
