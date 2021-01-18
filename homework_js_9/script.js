@@ -1,29 +1,37 @@
-let newEl = document.createElement('h2');
-newEl.appendChild(document.createTextNode('События'));
-document.body.appendChild(newEl);
 
-let blocCord1 = document.createElement('span');
-document.body.appendChild(blocCord1);
-blocCord1.innerHTML = '<div id="elem1">0 : 0</div>';
+const $title = createNode("h2", "События", null);
 
-let div = document.createElement('div');
-div.style.backgroundColor = 'green';
-div.style.width = '400px';
-div.style.height = '400px';
-document.body.appendChild(div);
+const $globalCoordinates = createNode("div", getCoordinatesString(), null);
 
-let blocCord2 = document.createElement('span');
-document.body.appendChild(blocCord2);
-blocCord2.innerHTML = '<div id="elem2">0 : 0</div>';
+const $blockCoordinates = createNode("div", getCoordinatesString(), null);
 
-let elem1 = document.getElementById('elem1');
-
-document.addEventListener('mousemove', function(event) {
-    elem1.innerHTML = ' x : ' + event.clientX + ' y : ' + event.clientY;
+const $block = createNode("div", "", {
+    backgroundColor: "green",
+    width: "400px",
+    height: "400px"
 });
 
-let elem2 = document.getElementById('elem2');
+document.body.append($title, $globalCoordinates, $block, $blockCoordinates);
 
-div.addEventListener('mousemove', function(event) {
-    elem2.innerHTML = ' x : ' + event.clientX + ' y : ' + event.clientY;
+document.addEventListener("mousemove", function ({ clientX, clientY }) {
+    $globalCoordinates.innerHTML = getCoordinatesString(clientX, clientY);
 });
+
+$block.addEventListener("mousemove", function ({ clientX, clientY }) {
+    $blockCoordinates.innerHTML = getCoordinatesString(clientX, clientY);
+});
+
+function getCoordinatesString(x = 0, y = 0) {
+    return " x: " + x + ", y: " + y;
+}
+
+function createNode(nodeType, innerText, styles) {
+    const newNode = document.createElement(nodeType);
+    newNode.innerHTML = innerText;
+    if (styles && typeof styles === "object") {
+        for (const key in styles) {
+            newNode.style[key] = styles[key];
+        }
+    }
+    return newNode;
+}
