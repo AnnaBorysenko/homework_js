@@ -1,3 +1,4 @@
+
 const $title = createNode("h2", "События", null);
 const $globalCoordinates = createNode("div", getCoordinatesString(), null);
 
@@ -17,7 +18,7 @@ document.addEventListener("mousemove", function ({clientX, clientY}) {
 
 $block.addEventListener("mousemove", function ({clientX, clientY}) {
     const x = clientX - this.offsetLeft;
-    const y = clientX - this.offsetTop;
+    const y = clientY - this.offsetTop;
     $blockCoordinates.innerHTML = getCoordinatesString(x, y);
 });
 
