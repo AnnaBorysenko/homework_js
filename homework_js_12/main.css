@@ -1,0 +1,6 @@
+.container .carousel-control-next,
+.container .carousel-control-prev {
+    height: 50%;
+    transform: translate(0, -50%);
+    top: 50%;
+}
